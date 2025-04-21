@@ -2,28 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:holly_quran/core/resources/app_assets.dart';
 import 'package:holly_quran/core/resources/app_colors.dart';
-import 'package:holly_quran/core/resources/app_constants.dart';
-import 'package:holly_quran/core/resources/app_strings.dart';
 import 'package:holly_quran/core/resources/values_manager.dart';
 import 'package:holly_quran/features/common_widgets/app_bar.dart';
 import 'package:holly_quran/features/common_widgets/bottom_navigation_bar.dart';
+import 'package:holly_quran/features/contact_us/presentation/widgets/contact_us_view_body.dart';
 import 'package:holly_quran/features/home/presentation/view_models/bottom_navBar/bottom_nav_bar_cubit.dart';
+import 'package:holly_quran/features/home/presentation/views/widgets/duaa_view_body.dart';
 import 'package:holly_quran/features/home/presentation/views/widgets/home_view_body.dart';
-import 'package:holly_quran/features/home/presentation/views/widgets/quran_view_body.dart';
-import 'package:holly_quran/features/home/presentation/views/widgets/sadaqat_view_body.dart';
-import 'package:holly_quran/features/home/presentation/views/widgets/salah_view_body.dart';
-import 'package:holly_quran/features/home/presentation/views/widgets/tasbih_view_body.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     final navBarWidgets = <Widget>[
-      const QuranViewBody(),
-      const SadaqatViewBody(),
-      const TasbihViewBody(),
-      const SalahViewBody(),
+      const DuaaViewBody(),
+      const ContactUsViewBody(),
     ];
 
     // Determine if the keyboard is open

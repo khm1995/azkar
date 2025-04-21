@@ -1,6 +1,7 @@
 class AppStrings {
   // bottom navbar
   static const String quran = 'القرآن';
+  static const String duaa = 'الأدعية';
   static const String sadqat = "الصدقات";
   static const String tasbih = "التسبيح";
   static const String salah = "الصلاة";
@@ -23,7 +24,8 @@ class AppStrings {
   static const String success = "تم بنجاح";
   static const String retryAgain = "حاول ثانية";
   static const String markStop = 'تم تحديد علامة الوقف بنجاح';
-  static const String sadaqatTitle = 'اللهم أرحم من وارى التراب أجسادهم وهم في ذكرانا';
+  static const String sadaqatTitle =
+      'اللهم أرحم من وارى التراب أجسادهم وهم في ذكرانا';
   static const String werdTitle = 'حافظ علي وردك اليومي';
   static const String sadaqatSubTitle = 'قراءة صفحة عشوائي من القرآن الكريم';
   static const String addNew = 'إضافة جديد';
@@ -42,11 +44,12 @@ class AppStrings {
   static const String quranAgzaa = 'أجزاء القرآن';
   static const String werdDay = 'ورد اليوم';
   static const String inviteShareApp = 'ادعوك لتحميل التطبيق الآن';
-  static const String  shareApp = 'شارك التطبيق';
+  static const String shareApp = 'شارك التطبيق';
   static const String aboutApp = 'عن التطبيق';
   static const String rateUs = 'تقييمنا';
   static const String settings = 'الإعدادات';
-  static const String contactTitle = 'إسلامنا تطبيق إسلامي لتقديم  بعض الخدمات والمميزات الدينية لمساعدتك في الحفاظ علي يومك';
+  static const String contactTitle =
+      'مواسم الماسي للحج والعمرة تطبيق إسلامي لتقديم  بعض الخدمات والمميزات الدينية لمساعدتك';
   static const String sendWhats = 'قم بإرسال أي مقترح أو شكوي عبر الواتساب:';
   static const String contactMessage = 'رسالتك';
   static const String sendNow = 'إرسال الآن';
@@ -55,15 +58,12 @@ class AppStrings {
   static const String ihdaaType = 'نوع الاهداء :';
   static const String ihdaaGeneral = 'عام';
   static const String ihdaaRamadan = 'رمضان';
-  static const String ihdaaSign= ' التوقيع :';
+  static const String ihdaaSign = ' التوقيع :';
   static const String content = 'الرسالة';
   static const String noData = 'يرجي ادخال بيانات كاملة';
 
-
-
   static const String done = 'تم';
   static const String successfully = 'بنجاح';
-
 
   // wheel
   static const String dayWheel = 'تحدي اليوم';

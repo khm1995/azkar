@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:holly_quran/core/resources/app_assets.dart';
 import 'package:holly_quran/core/resources/app_colors.dart';
 import 'package:holly_quran/core/resources/app_constants.dart';
@@ -67,6 +68,34 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: FontSize.s17),
             ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "تابعنا على وسائل التواصل الاجتماعي:",
+                style: TextStyle(
+                  fontSize: FontSize.s15,
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            const SizedBox(height: AppSize.s16),
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: AppSize.s20,
+              runSpacing: AppSize.s16,
+              children: [
+                _buildSocialIcon("واتساب", FontAwesomeIcons.whatsapp,
+                    AppConstants.whatsPhone,
+                    isWhatsApp: true),
+                _buildSocialIcon("فيسبوك", FontAwesomeIcons.facebook,
+                    "https://facebook.com/"),
+                _buildSocialIcon(
+                    "تويتر", FontAwesomeIcons.twitter, "https://twitter.com/"),
+                _buildSocialIcon("انستغرام", FontAwesomeIcons.instagram,
+                    "https://instagram.com/"),
+              ],
+            ),
             const SizedBox(height: AppSize.s30),
             Align(
               alignment: Alignment.centerRight,
@@ -118,4 +147,34 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
       ),
     );
   }
+}
+
+/// Build a social media contact icon
+Widget _buildSocialIcon(String label, IconData fontAwesomeIcons, String url,
+    {bool isWhatsApp = false}) {
+  return GestureDetector(
+    onTap: () async {
+      final launchUrlStr = isWhatsApp ? 'whatsapp://send?phone=$url' : url;
+      if (await canLaunchUrl(Uri.parse(launchUrlStr))) {
+        await launchUrl(Uri.parse(launchUrlStr),
+            mode: LaunchMode.externalApplication);
+      }
+    },
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white,
+            boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 4)],
+          ),
+          child: FaIcon(fontAwesomeIcons, color: Colors.green, size: 40),
+        ),
+        const SizedBox(height: 6),
+        Text(label, style: TextStyle(fontSize: 13)),
+      ],
+    ),
+  );
 }

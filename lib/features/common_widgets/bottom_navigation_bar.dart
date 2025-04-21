@@ -10,18 +10,19 @@ import 'package:holly_quran/features/home/presentation/view_models/bottom_navBar
 class AppBottomNavigationBar extends StatelessWidget {
   final BottomNavBarCubit cubit;
   final BottomNavBarState state;
-  const AppBottomNavigationBar({required this.cubit,required this.state,Key? key}) : super(key: key);
+  const AppBottomNavigationBar(
+      {required this.cubit, required this.state, super.key});
   @override
   Widget build(BuildContext context) {
     final navBarIcons = <String>[
-      ImageAssets.quran,
-      ImageAssets.sadqat,
+      ImageAssets.azkarMasaa,
+      ImageAssets.about,
       ImageAssets.tasbih,
       ImageAssets.salah,
     ];
     final navBarTitles = <String>[
-      AppStrings.quran,
-      AppStrings.sadqat,
+      AppStrings.duaa,
+      AppStrings.aboutApp,
       AppStrings.tasbih,
       AppStrings.salah,
     ];
@@ -34,14 +35,14 @@ class AppBottomNavigationBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(navBarIcons[index],width: AppSize.s50),
+            Image.asset(navBarIcons[index], width: AppSize.s50),
             Padding(
               padding: const EdgeInsets.all(AppPadding.p2),
               child: Text(
                 navBarTitles[index],
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: color,
-                ),
+                      color: color,
+                    ),
                 // group: autoSizeGroup,
               ),
             )
