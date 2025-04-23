@@ -33,11 +33,9 @@ class HomeView extends StatelessWidget {
               preferredSize: Size.fromHeight(AppSize.s0),
               child: MyAppBar(title: ''),
             ),
-            body: NotificationListener<ScrollNotification>(
-              child: cubit.currentIndex < cubit.allItemsCount
-                  ? navBarWidgets[cubit.currentIndex]
-                  : const HomeViewBody(),
-            ),
+            body: cubit.currentIndex < cubit.allItemsCount
+                ? navBarWidgets[cubit.currentIndex]
+                : HomeViewBody(),
             floatingActionButton: isKeyboardOpen
                 ? null // Don't show the FAB when the keyboard is open
                 : SizedBox(

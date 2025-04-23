@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:holly_quran/core/helper_functions/functions.dart';
 import 'package:holly_quran/core/resources/app_assets.dart';
 import 'package:holly_quran/core/resources/app_colors.dart';
 import 'package:holly_quran/core/resources/app_fonts.dart';
 import 'package:holly_quran/core/resources/app_routers.dart';
-import 'package:holly_quran/core/resources/app_strings.dart';
 import 'package:holly_quran/core/resources/values_manager.dart';
 import 'package:holly_quran/features/home/data/models/duaa/duaa_model.dart';
 
@@ -59,16 +59,21 @@ class DuaaWidget extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(duaa.type),
-                    Row(
-                      children: [
-                        Text(arNumber("${duaa.id}")),
-                        const SizedBox(
-                          width: AppSize.s4,
-                        ),
-                        const Text(AppStrings.aya),
-                      ],
-                    ),
+                    duaa.type == "sound"
+                        ? Icon(
+                            Icons.audiotrack_outlined,
+                            size: 25,
+                          )
+                        : Icon(FontAwesomeIcons.youtube, size: 25),
+                    // Row(
+                    //   children: [
+                    //     Text(arNumber("${duaa.id}")),
+                    //     const SizedBox(
+                    //       width: AppSize.s4,
+                    //     ),
+                    //     const Text(AppStrings.aya),
+                    //   ],
+                    // ),
                   ],
                 ),
               ],

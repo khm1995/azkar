@@ -42,6 +42,9 @@ dependencies:
   percent_indicator: ^4.2.3
   sqflite: ^2.2.8
   audioplayers: ^6.4.0
+  youtube_explode_dart: ^2.4.0
+  chewie: ^1.11.3
+  video_player: ^2.9.5
   audio_video_progress_bar: ^2.0.3
 
 dev_dependencies:

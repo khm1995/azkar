@@ -17,14 +17,10 @@ class AppBottomNavigationBar extends StatelessWidget {
     final navBarIcons = <String>[
       ImageAssets.azkarMasaa,
       ImageAssets.about,
-      ImageAssets.tasbih,
-      ImageAssets.salah,
     ];
     final navBarTitles = <String>[
       AppStrings.duaa,
       AppStrings.aboutApp,
-      AppStrings.tasbih,
-      AppStrings.salah,
     ];
     return AnimatedBottomNavigationBar.builder(
       height: AppSize.s100,

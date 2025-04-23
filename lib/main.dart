@@ -15,7 +15,7 @@ void main() async {
 
   //SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky, overlays: []);
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
+  setupServiceLocator();
   runApp(const HajApp());
 }
 

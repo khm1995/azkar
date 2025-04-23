@@ -7,8 +7,21 @@ class HomeRepoImpl implements HomeRepo {
   @override
   List<DuaaModel> fetchDuaa() {
     return <DuaaModel>[
-      DuaaModel(id: 1, name: "دعاء الأول ", type: "sound", url: "media/1.mp3"),
-      DuaaModel(id: 2, name: "دعاء الثاني ", type: "sound", url: "media/2.mp3")
+      DuaaModel(
+          id: 1,
+          name: "الدعاء عند دخول الحرم ",
+          type: "sound",
+          url: "media/1.mp3"),
+      DuaaModel(
+          id: 2,
+          name: "الدعاء عند رؤية الكعبة ",
+          type: "sound",
+          url: "media/2.mp3"),
+      DuaaModel(
+          id: 3,
+          name: "كيفية رمي الجمرات",
+          type: "video",
+          url: "https://www.youtube.com/watch?v=efawj1FwOyg")
     ];
   }
 }
