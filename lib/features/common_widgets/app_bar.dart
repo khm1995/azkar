@@ -8,7 +8,7 @@ import 'package:holly_quran/core/resources/app_routers.dart';
 class MyAppBar extends StatelessWidget {
   final String title;
 
-  const MyAppBar({required this.title, Key? key}) : super(key: key);
+  const MyAppBar({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {

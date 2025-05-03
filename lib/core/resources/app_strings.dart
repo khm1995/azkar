@@ -2,6 +2,8 @@ class AppStrings {
   // bottom navbar
   static const String quran = 'القرآن';
   static const String duaa = 'الأدعية';
+  static const String groups = 'المجموعات';
+  static const String videos = 'المرئيات';
   static const String sadqat = "الصدقات";
   static const String tasbih = "التسبيح";
   static const String salah = "الصلاة";

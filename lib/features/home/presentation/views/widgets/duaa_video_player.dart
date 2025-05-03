@@ -1,91 +1,79 @@
-import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
-import 'package:youtube_explode_dart/youtube_explode_dart.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DuaaVideoPlayer extends StatefulWidget {
   final String youtubeUrl;
   final String videoTitle;
 
   const DuaaVideoPlayer({
-    super.key,
+    Key? key,
     required this.youtubeUrl,
     required this.videoTitle,
-  });
+  }) : super(key: key);
 
   @override
   State<DuaaVideoPlayer> createState() => _DuaaVideoPlayerState();
 }
 
 class _DuaaVideoPlayerState extends State<DuaaVideoPlayer> {
-  late VideoPlayerController _videoPlayerController;
-  ChewieController? _chewieController;
-  bool _isLoading = true;
-  String? _error;
+  late YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    _initializePlayer();
-  }
+    final videoId = YoutubePlayer.convertUrlToId(widget.youtubeUrl);
 
-  Future<void> _initializePlayer() async {
-    try {
-      final yt = YoutubeExplode();
-      final videoId = VideoId(widget.youtubeUrl);
-      final manifest = await yt.videos.streamsClient.getManifest(videoId);
-      final streamInfo = manifest.muxed.withHighestBitrate();
-      final streamUrl = streamInfo.url.toString();
-
-      _videoPlayerController =
-          VideoPlayerController.networkUrl(Uri.parse(streamUrl));
-      await _videoPlayerController.initialize();
-
-      _chewieController = ChewieController(
-        videoPlayerController: _videoPlayerController,
-        autoPlay: false,
-        looping: false,
-      );
-
-      setState(() {
-        _isLoading = false;
-      });
-
-      yt.close();
-    } catch (e) {
-      setState(() {
-        _error = 'Failed to load video: $e';
-      });
+    if (videoId == null) {
+      // Handle error if URL is invalid
+      throw Exception("Invalid YouTube URL");
     }
+
+    _controller = YoutubePlayerController(
+      initialVideoId: videoId,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+        controlsVisibleAtStart: true,
+        enableCaption: true,
+      ),
+    );
   }
 
   @override
   void dispose() {
-    _videoPlayerController.dispose();
-    _chewieController?.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_error != null) {
-      return Center(
-          child: Text(_error!, style: const TextStyle(color: Colors.red)));
-    }
-
-    if (_isLoading || _chewieController == null) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        AspectRatio(
-          aspectRatio: _videoPlayerController.value.aspectRatio,
-          child: Chewie(controller: _chewieController!),
+        YoutubePlayer(
+          controller: _controller,
+          showVideoProgressIndicator: true,
+          progressIndicatorColor: Colors.red,
+          progressColors: const ProgressBarColors(
+            playedColor: Colors.red,
+            handleColor: Colors.redAccent,
+          ),
+          onReady: () {
+            debugPrint('Player is ready.');
+          },
         ),
         const SizedBox(height: 12),
-        const Text("العنوان: كيفية رمي الجمرات",
-            style: TextStyle(fontWeight: FontWeight.bold)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            widget.videoTitle,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+          ),
+        ),
       ],
     );
   }

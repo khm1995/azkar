@@ -9,7 +9,7 @@ import 'package:holly_quran/core/resources/values_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUsViewBody extends StatefulWidget {
-  const ContactUsViewBody({Key? key}) : super(key: key);
+  const ContactUsViewBody({super.key});
 
   @override
   State<ContactUsViewBody> createState() => _ContactUsViewBodyState();
@@ -125,9 +125,9 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
               child: ElevatedButton(
                 onPressed: _formValid ? _submitForm : null,
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                  backgroundColor: WidgetStateProperty.resolveWith<Color>(
                     (states) {
-                      if (states.contains(MaterialState.disabled)) {
+                      if (states.contains(WidgetState.disabled)) {
                         return AppColors.grey;
                       }
                       return AppColors.primary;

@@ -1,0 +1,111 @@
+import 'dart:math';
+
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:holly_quran/core/extension/extensions.dart';
+import 'package:holly_quran/core/resources/values_manager.dart';
+import 'package:holly_quran/features/common_widgets/quran_app_bar.dart';
+import 'package:holly_quran/features/home/data/models/duaa/group_model.dart';
+
+import '../../../../../core/resources/app_assets.dart';
+import '../../../../../core/resources/app_colors.dart';
+import 'card_member.dart';
+
+class GroupDetailsView extends StatefulWidget {
+  final GroupModel group;
+  final String id;
+
+  const GroupDetailsView({super.key, required this.group, required this.id});
+
+  @override
+  State<GroupDetailsView> createState() => _GroupDetailsViewState();
+}
+
+class _GroupDetailsViewState extends State<GroupDetailsView> {
+  int activeIndex = 1;
+  @override
+  Widget build(BuildContext context) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(AppSize.s50),
+          child: QuranAppBar(title: " ${widget.group.name}"),
+        ),
+        body: Container(
+          height: context.height,
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(ImageAssets.background),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                const SizedBox(
+                  height: AppSize.s1,
+                ),
+                if (widget.group.members.isNotEmpty) ...[
+                  CarouselSlider.builder(
+                    itemCount: widget.group.members.length,
+                    itemBuilder: (ctx, index, realIdx) {
+                      return CardMember(
+                        member: widget.group.members[index],
+                        logo: widget.group.logo,
+                      ); //buildContainerScreen(groups[index]);
+                    },
+                    options: CarouselOptions(
+                      initialPage:
+                          Random().nextInt(widget.group.members.length),
+                      height: context.height * 0.54,
+                      viewportFraction: 0.6,
+                      enableInfiniteScroll: false,
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      autoPlay: true,
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          activeIndex = index;
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: AppSize.s16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      widget.group.members.length,
+                      (index) => Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: activeIndex == index
+                              ? AppColors.primary
+                              : Colors.grey[400],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                if (widget.group.members.isEmpty)
+                  Column(
+                    children: [
+                      SizedBox(height: context.height * 0.4),
+                      const Center(
+                          child: Text("لا يوجد اعضاء في هذه المجموعة")),
+                    ],
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:holly_quran/core/extension/extensions.dart';
 import 'package:holly_quran/core/resources/app_assets.dart';
@@ -7,7 +6,7 @@ import 'package:holly_quran/core/resources/app_routers.dart';
 
 class SouraStackWidget extends StatelessWidget {
   final VoidCallback functionMark;
-  const SouraStackWidget({Key? key, required this.functionMark}) : super(key: key);
+  const SouraStackWidget({super.key, required this.functionMark});
 
   @override
   Widget build(BuildContext context) {

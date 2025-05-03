@@ -7,12 +7,13 @@ import 'package:holly_quran/core/resources/styles_manager.dart';
 import 'package:holly_quran/core/resources/values_manager.dart';
 import 'package:lottie/lottie.dart';
 
-abstract class StateRender{
+abstract class StateRender {
   static Widget fullLoadingScreenImage = const FullLoadingScreenImage();
 }
+
 class FullLoadingScreenImage extends StatelessWidget {
   final String message;
-  const FullLoadingScreenImage({this.message=AppStrings.loading,Key? key}) : super(key: key);
+  const FullLoadingScreenImage({this.message = AppStrings.loading, super.key});
   @override
   Widget build(BuildContext context) {
     return _getItemsColumn([
@@ -24,7 +25,8 @@ class FullLoadingScreenImage extends StatelessWidget {
 
 class FullLoadingScreenAnimated extends StatelessWidget {
   final String message;
-  const FullLoadingScreenAnimated({this.message=AppStrings.loading,Key? key}) : super(key: key);
+  const FullLoadingScreenAnimated(
+      {this.message = AppStrings.loading, super.key});
   @override
   Widget build(BuildContext context) {
     return _getItemsColumn([
@@ -40,32 +42,6 @@ Widget _getSmallImage(String imagePath) {
     height: AppSize.s100,
     width: AppSize.s100,
     child: Image.asset(imagePath),
-  );
-}
-
-Widget _getPopUpDialog(BuildContext context, List<Widget> children) {
-  return Dialog(
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSize.s14)),
-    elevation: AppSize.s1_5,
-    backgroundColor: Colors.transparent,
-    child: Container(
-      decoration: BoxDecoration(
-          color: AppColors.white,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(AppSize.s14),
-          boxShadow: const [BoxShadow(color: Colors.black26)]),
-      child: _getDialogContent(context, children),
-    ),
-  );
-}
-
-Widget _getDialogContent(BuildContext context, List<Widget> children) {
-  return Column(
-    mainAxisSize: MainAxisSize.min,
-    mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: children,
   );
 }
 
@@ -93,22 +69,11 @@ Widget _getMessage(String message) {
       child: Text(
         message,
         style: getRegularStyle(
-          color: AppColors.black, fontSize: FontSize.s18,),
+          color: AppColors.black,
+          fontSize: FontSize.s18,
+        ),
         textAlign: TextAlign.center,
       ),
-    ),
-  );
-}
-
-Widget _getRetryButton(String buttonTitle, BuildContext context,Function function) {
-  return Center(
-    child: Padding(
-      padding: const EdgeInsets.all(AppPadding.p18),
-      child: SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-              onPressed: function(),
-              child: Text(buttonTitle))),
     ),
   );
 }

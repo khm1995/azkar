@@ -1,12 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:holly_quran/features/contact_us/presentation/contact_us_view.dart';
+import 'package:holly_quran/features/home/data/models/duaa/group_model.dart';
 
 import '../../features/home/data/models/duaa/duaa_model.dart';
 import '../../features/home/presentation/view_models/bottom_navBar/bottom_nav_bar_cubit.dart';
 import '../../features/home/presentation/view_models/duaa/duaa/duaa_cubit.dart';
 import '../../features/home/presentation/views/duaa_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
+import '../../features/home/presentation/views/widgets/group_details_view.dart';
 
 class Routes {
   // static const String splashRoute = "/";
@@ -14,6 +16,7 @@ class Routes {
   static const String searchRoute = "/search";
   static const String contactViewRoute = "/contactViewRoute";
   static const String duaaDetailsRoute = "/duaaDetailsRoute";
+  static const String groupDetailsRoute = "/groupDetailsRoute";
 }
 
 abstract class AppRouters {
@@ -40,6 +43,20 @@ abstract class AppRouters {
             //surah:  state.params['id1'] as SurahModel,
             duaa: model,
             id: duaaId,
+          );
+        },
+        //builder: (context, state) => SurahView(),
+      ),
+      GoRoute(
+        path: "${Routes.groupDetailsRoute}:id1",
+        name: Routes.groupDetailsRoute,
+        builder: (context, state) {
+          String groupId = state.pathParameters['id1'] as String;
+          Map<String, dynamic> groupMap = state.extra as Map<String, dynamic>;
+          GroupModel model = GroupModel.fromJson(groupMap);
+          return GroupDetailsView(
+            group: model,
+            id: groupId,
           );
         },
         //builder: (context, state) => SurahView(),
