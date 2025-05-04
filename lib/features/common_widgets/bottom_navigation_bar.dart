@@ -24,7 +24,7 @@ class AppBottomNavigationBar extends StatelessWidget {
       AppStrings.duaa,
       AppStrings.admins,
       AppStrings.groups,
-      AppStrings.aboutApp,
+      AppStrings.who,
     ];
     return AnimatedBottomNavigationBar.builder(
       height: AppSize.s100,
@@ -38,12 +38,15 @@ class AppBottomNavigationBar extends StatelessWidget {
             Image.asset(navBarIcons[index], width: AppSize.s50),
             Padding(
               padding: const EdgeInsets.all(AppPadding.p2),
-              child: Text(
-                navBarTitles[index],
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                      color: color,
-                    ),
-                // group: autoSizeGroup,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  navBarTitles[index],
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: color,
+                      ),
+                  // group: autoSizeGroup,
+                ),
               ),
             )
           ],

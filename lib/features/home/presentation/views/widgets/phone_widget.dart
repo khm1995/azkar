@@ -35,6 +35,14 @@ class PhoneWidget extends StatelessWidget {
                       final url = 'https://wa.me/$phone';
                       if (await canLaunchUrl(Uri.parse(url))) {
                         await launchUrl(Uri.parse(url));
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                              content: Text(
+                                  "لا يمكن فتح تطبيق الهاتف على هذا الجهاز")),
+                        );
+                        // Optional: Show error message
+                        print("Cannot launch whatsapp");
                       }
                     },
                     child: const Icon(FontAwesomeIcons.whatsapp,
@@ -49,7 +57,15 @@ class PhoneWidget extends StatelessWidget {
                     onTap: () async {
                       final uri = Uri.parse('tel:$phone');
                       if (await canLaunchUrl(uri)) {
-                        await launchUrl(uri);
+                        await launchUrl(uri, mode: LaunchMode.platformDefault);
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                              content: Text(
+                                  "لا يمكن فتح تطبيق الهاتف على هذا الجهاز")),
+                        );
+                        // Optional: Show error message
+                        print("Cannot launch dialer");
                       }
                     },
                     child: const Icon(Icons.call_outlined,

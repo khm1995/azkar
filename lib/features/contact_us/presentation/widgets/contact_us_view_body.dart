@@ -26,14 +26,46 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
     });
   }
 
-  void _submitForm() async {
+  void _submitForm(BuildContext context) async {
     final message = _messageController.text.trim();
     const String phone = AppConstants.whatsPhone;
-    final url = 'whatsapp://send?phone=$phone&text=${Uri.parse(message)}';
-    if (!await launchUrl(Uri.parse(url))) {
-      throw Exception('Could not launch $url');
+
+    if (message.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('الرجاء إدخال الرسالة قبل الإرسال')),
+      );
+      return;
+    }
+
+    final encodedMessage = Uri.encodeComponent(message);
+    final whatsappUri =
+        Uri.parse('whatsapp://send?phone=$phone&text=$encodedMessage');
+    final fallbackUri = Uri.parse('https://wa.me/$phone?text=$encodedMessage');
+
+    try {
+      if (await canLaunchUrl(whatsappUri)) {
+        await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
+      } else if (await canLaunchUrl(fallbackUri)) {
+        await launchUrl(fallbackUri, mode: LaunchMode.externalApplication);
+      } else {
+        throw 'لا يمكن فتح تطبيق واتساب أو الرابط';
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('حدث خطأ أثناء محاولة فتح واتساب')),
+      );
+      debugPrint('Error launching WhatsApp: $e');
     }
   }
+
+  // void _submitForm() async {
+  //   final message = _messageController.text.trim();
+  //   const String phone = AppConstants.whatsPhone;
+  //   final url = 'whatsapp://send?phone=$phone&text=${Uri.parse(message)}';
+  //   if (!await launchUrl(Uri.parse(url))) {
+  //     throw Exception('Could not launch $url');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -108,10 +140,10 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
               runSpacing: AppSize.s16,
               children: [
                 _buildSocialIcon("واتساب", FontAwesomeIcons.whatsapp,
-                    AppConstants.whatsPhone,
+                    AppConstants.whatsPhone, context,
                     isWhatsApp: true),
                 _buildSocialIcon("فيسبوك", FontAwesomeIcons.facebook,
-                    "https://www.facebook.com/maasi.hajj"),
+                    "https://www.facebook.com/maasi.hajj", context),
                 // _buildSocialIcon(
                 //     "تويتر", FontAwesomeIcons.twitter, "https://twitter.com/"),
                 // _buildSocialIcon("انستغرام", FontAwesomeIcons.instagram,
@@ -145,7 +177,7 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
               height: AppSize.s50,
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _formValid ? _submitForm : null,
+                onPressed: _formValid ? () => _submitForm(context) : null,
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.resolveWith<Color>(
                     (states) {
@@ -172,14 +204,21 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
 }
 
 /// Build a social media contact icon
-Widget _buildSocialIcon(String label, IconData fontAwesomeIcons, String url,
+Widget _buildSocialIcon(
+    String label, IconData fontAwesomeIcons, String url, BuildContext context,
     {bool isWhatsApp = false}) {
   return GestureDetector(
     onTap: () async {
-      final launchUrlStr = isWhatsApp ? 'whatsapp://send?phone=$url' : url;
+      final launchUrlStr = isWhatsApp ? 'https://wa.me/$url' : url;
       if (await canLaunchUrl(Uri.parse(launchUrlStr))) {
         await launchUrl(Uri.parse(launchUrlStr),
             mode: LaunchMode.externalApplication);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("لا يمكن فتح تطبيق الهاتف على هذا الجهاز")),
+        );
+        // Optional: Show error message
+        print("Cannot launch dialer");
       }
     },
     child: Column(

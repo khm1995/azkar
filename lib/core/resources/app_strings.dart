@@ -49,6 +49,7 @@ class AppStrings {
   static const String inviteShareApp = 'ادعوك لتحميل التطبيق الآن';
   static const String shareApp = 'شارك التطبيق';
   static const String aboutApp = 'عن التطبيق';
+  static const String who = 'من نحن؟';
   static const String rateUs = 'تقييمنا';
   static const String settings = 'الإعدادات';
   static const String contactTitle =

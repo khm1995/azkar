@@ -4,7 +4,6 @@ import 'package:holly_quran/core/resources/values_manager.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../../core/resources/app_assets.dart';
-import '../../../../../core/resources/app_strings.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
@@ -20,6 +19,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   Widget build(BuildContext context) {
     return Container(
       height: context.height,
+      alignment: Alignment.center,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(ImageAssets.background),
@@ -28,7 +28,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       ),
       child: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(
               height: AppSize.s1,
@@ -40,7 +40,11 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ),
             ),
             Text(
-              AppStrings.homeTitle,
+              "التكتل الماسي", // AppStrings.homeTitle,
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+            Text(
+              "عمل - إخلاص - ارتقاء", // AppStrings.homeTitle,
               style: Theme.of(context).textTheme.displayLarge,
             ),
           ],
