@@ -10,18 +10,23 @@ class HomeRepoImpl implements HomeRepo {
       DuaaModel(
           id: 1,
           name: "الدعاء عند دخول الحرم ",
-          type: "sound",
-          url: "media/1.mp3"),
+          type: "audio",
+          url: "media/1.mp3",
+          subDuaas: [
+            DuaaModel(
+                id: 1, name: "الدعاء1", type: "audio", url: "media/1.mp3"),
+            DuaaModel(id: 2, name: "الدعاء2", type: "audio", url: "media/2.mp3")
+          ]),
       DuaaModel(
           id: 2,
           name: "الدعاء عند رؤية الكعبة ",
-          type: "sound",
+          type: "audio",
           url: "media/2.mp3"),
       DuaaModel(
-          id: 3,
+          id: 1,
           name: "كيفية رمي الجمرات",
           type: "video",
-          url: "https://www.youtube.com/watch?v=efawj1FwOyg")
+          url: "assets/videos/video1.mp4")
     ];
   }
 }

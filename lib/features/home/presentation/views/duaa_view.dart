@@ -14,6 +14,8 @@ class DuaaView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(duaa.name);
+    print(duaa.type);
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -21,14 +23,14 @@ class DuaaView extends StatelessWidget {
           preferredSize: const Size.fromHeight(AppSize.s0),
           child: QuranAppBar(title: " ${duaa.name}"),
         ),
-        body: duaa.type == "sound"
+        body: duaa.type == "audio"
             ? DuaaAudioPlayer(
                 assetPath: duaa.url,
                 assetName: duaa.name,
               )
             : DuaaVideoPlayer(
                 videoTitle: duaa.name,
-                youtubeUrl: duaa.url,
+                assetPath: duaa.url,
               ),
       ),
     );

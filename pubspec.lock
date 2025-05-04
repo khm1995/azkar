@@ -182,14 +182,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.3"
-  circle_flags:
-    dependency: transitive
-    description:
-      name: circle_flags
-      sha256: "875cd64e607b46838ce429e2f7cc88c615f8514181d2d0f9e73de37ba3fb2f52"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.0.0"
   cli_util:
     dependency: transitive
     description:
@@ -254,14 +246,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.11"
-  diacritic:
-    dependency: transitive
-    description:
-      name: diacritic
-      sha256: "12981945ec38931748836cd76f2b38773118d0baef3c68404bdfde9566147876"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.6"
   dio:
     dependency: "direct main"
     description:
@@ -278,6 +262,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  expansion_tile_list:
+    dependency: "direct main"
+    description:
+      name: expansion_tile_list
+      sha256: a07b0a2b44a84062e3d89e54bcfaa41dd2792ff9d7917013a8d8e6cebd512ad9
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -323,14 +315,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.1.0"
-  flutter_country_selector:
-    dependency: transitive
-    description:
-      name: flutter_country_selector
-      sha256: e2b2854d9c7c4ed3fb6782790038a0a79e8a0a099fd92b6d163040c0f0271533
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.16"
   flutter_inappwebview:
     dependency: transitive
     description:
@@ -443,11 +427,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-  flutter_localizations:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   flutter_native_splash:
     dependency: "direct main"
     description:
@@ -562,14 +541,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.4"
-  intl:
-    dependency: transitive
-    description:
-      name: intl
-      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.19.0"
   json_annotation:
     dependency: transitive
     description:
@@ -762,22 +733,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.0"
-  phone_form_field:
-    dependency: "direct main"
-    description:
-      name: phone_form_field
-      sha256: "4a7e741626e8f2157c8bf2d41228665dd950e9cf829a9d91f77a173817caa0a7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "10.0.6"
-  phone_numbers_parser:
-    dependency: transitive
-    description:
-      name: phone_numbers_parser
-      sha256: "8aaa49708c9314d450d80767753c6512402e848138e5a91bf59ed3e0d3ac5d9b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.0.3"
   platform:
     dependency: transitive
     description:

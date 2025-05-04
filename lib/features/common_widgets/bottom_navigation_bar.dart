@@ -16,13 +16,13 @@ class AppBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final navBarIcons = <String>[
       ImageAssets.azkarMasaa,
-      ImageAssets.azkarSabah,
-      ImageAssets.hesnMuslim,
+      ImageAssets.werd,
+      ImageAssets.share,
       ImageAssets.about,
     ];
     final navBarTitles = <String>[
       AppStrings.duaa,
-      AppStrings.videos,
+      AppStrings.admins,
       AppStrings.groups,
       AppStrings.aboutApp,
     ];

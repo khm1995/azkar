@@ -303,6 +303,7 @@ class _GroupViewBodyState extends State<GroupViewBody> {
     ];
     return Container(
       height: context.height,
+      alignment: Alignment.center,
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(ImageAssets.background),
@@ -316,44 +317,24 @@ class _GroupViewBodyState extends State<GroupViewBody> {
             const SizedBox(
               height: AppSize.s1,
             ),
-            Container(
-                padding: const EdgeInsets.symmetric(horizontal: AppSize.s4),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      "assets/images/icon.png",
-                      height: AppSize.s80,
-                    ),
-                    Expanded(
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "تكتل الماسي \n برئاسة \n محمود رضوان الحداد",
-                          style: Theme.of(context).textTheme.displayLarge,
-                        ),
-                      ),
-                    ),
-                    CircleAvatar(
-                      radius: AppSize.s50,
-                      backgroundColor: Colors.white,
-                      child: CircleAvatar(
-                        radius: AppSize.s40,
-                        backgroundImage:
-                            AssetImage("assets/groups/almasi_photo.png"),
-                      ),
-                    ),
-                  ],
-                )),
             // Container(
             //     padding: const EdgeInsets.symmetric(horizontal: AppSize.s4),
             //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.end,
+            //       crossAxisAlignment: CrossAxisAlignment.center,
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
             //       children: [
-            //         Text(
-            //           "رئيس التكتل \n محمود رضوان الحداد",
-            //           style: Theme.of(context).textTheme.displayLarge,
+            //         Image.asset(
+            //           "assets/images/icon.png",
+            //           height: AppSize.s80,
+            //         ),
+            //         Expanded(
+            //           child: Container(
+            //             alignment: Alignment.center,
+            //             child: Text(
+            //               "تكتل الماسي \n برئاسة \n محمود رضوان الحداد",
+            //               style: Theme.of(context).textTheme.displayLarge,
+            //             ),
+            //           ),
             //         ),
             //         CircleAvatar(
             //           radius: AppSize.s50,
@@ -366,18 +347,6 @@ class _GroupViewBodyState extends State<GroupViewBody> {
             //         ),
             //       ],
             //     )),
-
-            // Center(
-            //   child: SizedBox(
-            //     height: context.height * 0.35,
-            //     child: Lottie.asset(JsonAssets.homeAvatar),
-            //   ),
-            // ),
-            // Text(
-            //   AppStrings.homeTitle,
-            //   style: Theme.of(context).textTheme.displayLarge,
-            // ),
-
             CarouselSlider.builder(
               itemCount: groups.length,
               itemBuilder: (ctx, index, realIdx) {

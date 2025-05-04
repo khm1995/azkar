@@ -4,6 +4,7 @@ class AppStrings {
   static const String duaa = 'الأدعية';
   static const String groups = 'المجموعات';
   static const String videos = 'المرئيات';
+  static const String admins = 'الإداريين';
   static const String sadqat = "الصدقات";
   static const String tasbih = "التسبيح";
   static const String salah = "الصلاة";

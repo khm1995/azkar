@@ -30,7 +30,7 @@ dependencies:
   audio_video_progress_bar: ^2.0.3
   flutter_packages_remover: ^0.0.1
   youtube_player_flutter: ^9.1.1
-  phone_form_field: ^10.0.6
+  expansion_tile_list: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +66,7 @@ flutter:
     - assets/groups/
     - assets/members/
     - assets/media/
+    - assets/videos/
 
   fonts:
     - family: Cairo

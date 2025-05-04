@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:holly_quran/core/extension/extensions.dart';
 import 'package:holly_quran/core/resources/app_assets.dart';
 import 'package:holly_quran/core/resources/app_colors.dart';
 import 'package:holly_quran/core/resources/app_constants.dart';
@@ -37,7 +38,7 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(AppPadding.p20),
+      padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
       height: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -50,19 +51,40 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppSize.s20)),
-              width: AppSize.s200,
-              height: AppSize.s200,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(AppSize.s20),
-                child: Image.asset(
-                  ImageAssets.icon,
-                  fit: BoxFit.cover,
-                ),
+              height: context.height * 0.25,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(AppSize.s20)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(AppSize.s20),
+                        child: Image.asset(
+                          "assets/images/icon.png",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(AppSize.s20)),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(AppSize.s20),
+                        child: Image.asset(
+                          "assets/images/mawasem_logo.png",
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: AppSize.s16),
+            const SizedBox(height: AppSize.s8),
             const Text(
               AppStrings.contactTitle,
               textAlign: TextAlign.center,
@@ -89,14 +111,14 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
                     AppConstants.whatsPhone,
                     isWhatsApp: true),
                 _buildSocialIcon("فيسبوك", FontAwesomeIcons.facebook,
-                    "https://facebook.com/"),
-                _buildSocialIcon(
-                    "تويتر", FontAwesomeIcons.twitter, "https://twitter.com/"),
-                _buildSocialIcon("انستغرام", FontAwesomeIcons.instagram,
-                    "https://instagram.com/"),
+                    "https://www.facebook.com/maasi.hajj"),
+                // _buildSocialIcon(
+                //     "تويتر", FontAwesomeIcons.twitter, "https://twitter.com/"),
+                // _buildSocialIcon("انستغرام", FontAwesomeIcons.instagram,
+                //     "https://instagram.com/"),
               ],
             ),
-            const SizedBox(height: AppSize.s30),
+            const SizedBox(height: AppSize.s10),
             Align(
               alignment: Alignment.centerRight,
               child: Text(
@@ -107,7 +129,7 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
                     decoration: TextDecoration.underline),
               ),
             ),
-            const SizedBox(height: AppSize.s16),
+            const SizedBox(height: AppSize.s8),
             TextField(
               controller: _messageController,
               keyboardType: TextInputType.multiline,
@@ -118,9 +140,9 @@ class _ContactUsViewBodyState extends State<ContactUsViewBody> {
               ),
               onChanged: (_) => _validateForm(),
             ),
-            const SizedBox(height: AppSize.s16),
+            const SizedBox(height: AppSize.s8),
             SizedBox(
-              height: AppSize.s60,
+              height: AppSize.s50,
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _formValid ? _submitForm : null,

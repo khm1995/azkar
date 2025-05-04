@@ -5,7 +5,6 @@ import 'package:holly_quran/features/home/data/models/duaa/group_model.dart';
 
 import '../../features/home/data/models/duaa/duaa_model.dart';
 import '../../features/home/presentation/view_models/bottom_navBar/bottom_nav_bar_cubit.dart';
-import '../../features/home/presentation/view_models/duaa/duaa/duaa_cubit.dart';
 import '../../features/home/presentation/views/duaa_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/home/presentation/views/widgets/group_details_view.dart';
@@ -33,12 +32,14 @@ abstract class AppRouters {
       ),
 
       GoRoute(
-        path: "${Routes.duaaDetailsRoute}:id1/:id2",
+        path: "${Routes.duaaDetailsRoute}:id1",
         name: Routes.duaaDetailsRoute,
         builder: (context, state) {
           String duaaId = state.pathParameters['id1'] as String;
-          DuaaModel model =
-              BlocProvider.of<DuaaCubit>(context).duaas[int.parse(duaaId) - 1];
+          Map<String, dynamic> modelMap = state.extra as Map<String, dynamic>;
+          DuaaModel model = DuaaModel.fromJson(modelMap);
+          // DuaaModel model =
+          //     BlocProvider.of<DuaaCubit>(context).duaas[int.parse(duaaId) - 1];
           return DuaaView(
             //surah:  state.params['id1'] as SurahModel,
             duaa: model,
